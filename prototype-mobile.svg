@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375" height="2000" viewBox="0 0 375 2000" xmlns="http://www.w3.org/2000/svg">
+    <!-- 样式定义 -->
+    <style>
+        .title { font-size: 18px; font-weight: bold; }
+        .subtitle { font-size: 14px; font-weight: bold; }
+        .text { font-size: 12px; }
+        .container { fill: #f5f5f5; stroke: #ccc; }
+        .header { fill: #ffffff; stroke: #ddd; }
+        .button { fill: #4a90e2; }
+        .card { fill: #ffffff; stroke: #eee; }
+        .menu-icon { fill: none; stroke: #333; stroke-width: 2; }
+    </style>
+
+    <!-- 移动端首页设计 (0-700px) -->
+    <g transform="translate(0,0)">
+        <!-- 标题 -->
+        <text x="20" y="30" class="title">移动端首页</text>
+        
+        <!-- 头部导航 -->
+        <rect x="0" y="40" width="375" height="50" class="header"/>
+        <!-- 汉堡菜单图标 -->
+        <path d="M20,55 L40,55 M20,60 L40,60 M20,65 L40,65" class="menu-icon"/>
+        <text x="60" y="70" class="subtitle">Logo</text>
+        <circle cx="340" cy="65" r="15" class="button"/>
+        <text x="335" y="70" fill="white">搜</text>
+
+        <!-- 横向滚动分类导航 -->
+        <rect x="0" y="90" width="375" height="40" class="container"/>
+        <text x="20" y="115" class="text">全部</text>
+        <text x="80" y="115" class="text">动作</text>
+        <text x="140" y="115" class="text">益智</text>
+        <text x="200" y="115" class="text">策略</text>
+        <text x="260" y="115" class="text">角色</text>
+
+        <!-- 游戏卡片网格 (2列) -->
+        <g transform="translate(10,140)">
+            <!-- 第一行游戏卡片 -->
+            <rect x="0" y="0" width="170" height="200" class="card"/>
+            <rect x="180" y="0" width="170" height="200" class="card"/>
+            
+            <!-- 第二行游戏卡片 -->
+            <rect x="0" y="210" width="170" height="200" class="card"/>
+            <rect x="180" y="210" width="170" height="200" class="card"/>
+
+            <!-- 第三行游戏卡片 -->
+            <rect x="0" y="420" width="170" height="200" class="card"/>
+            <rect x="180" y="420" width="170" height="200" class="card"/>
+        </g>
+    </g>
+
+    <!-- 移动端游戏详情页设计 (700-1400px) -->
+    <g transform="translate(0,700)">
+        <!-- 标题 -->
+        <text x="20" y="30" class="title">游戏详情页</text>
+
+        <!-- 返回按钮 -->
+        <rect x="20" y="40" width="60" height="30" rx="15" class="button"/>
+        <text x="35" y="60" fill="white">返回</text>
+
+        <!-- 游戏容器 -->
+        <rect x="0" y="80" width="375" height="300" class="container"/>
+        <text x="187" y="220" text-anchor="middle" class="subtitle">游戏 iframe 容器</text>
+
+        <!-- 游戏信息 -->
+        <rect x="10" y="390" width="355" height="150" class="card"/>
+        <text x="20" y="410" class="subtitle">游戏介绍</text>
+        
+        <!-- 操作指南 -->
+        <rect x="10" y="550" width="355" height="100" class="card"/>
+        <text x="20" y="570" class="subtitle">操作指南</text>
+
+        <!-- 评论区 -->
+        <rect x="10" y="660" width="355" height="200" class="card"/>
+        <text x="20" y="680" class="subtitle">评论区</text>
+    </g>
+
+    <!-- 移动端后台管理界面设计 (1400-2000px) -->
+    <g transform="translate(0,1400)">
+        <!-- 标题 -->
+        <text x="20" y="30" class="title">后台管理</text>
+
+        <!-- 顶部导航 -->
+        <rect x="0" y="40" width="375" height="50" class="header"/>
+        <path d="M20,55 L40,55 M20,60 L40,60 M20,65 L40,65" class="menu-icon"/>
+        <text x="60" y="70" class="subtitle">管理后台</text>
+
+        <!-- 快捷操作按钮 -->
+        <rect x="10" y="100" width="110" height="40" rx="5" class="button"/>
+        <text x="25" y="125" fill="white">游戏管理</text>
+        <rect x="130" y="100" width="110" height="40" rx="5" class="button"/>
+        <text x="145" y="125" fill="white">用户管理</text>
+        <rect x="250" y="100" width="110" height="40" rx="5" class="button"/>
+        <text x="265" y="125" fill="white">数据统计</text>
+
+        <!-- 数据列表 -->
+        <rect x="10" y="150" width="355" height="400" class="container"/>
+        
+        <!-- 表头 -->
+        <rect x="10" y="150" width="355" height="40" class="header"/>
+        <text x="30" y="175" class="text">ID</text>
+        <text x="100" y="175" class="text">游戏名称</text>
+        <text x="200" y="175" class="text">状态</text>
+        <text x="300" y="175" class="text">操作</text>
+
+        <!-- 列表项 -->
+        <rect x="10" y="190" width="355" height="40" fill="#ffffff"/>
+        <rect x="10" y="230" width="355" height="40" fill="#f9f9f9"/>
+        <rect x="10" y="270" width="355" height="40" fill="#ffffff"/>
+    </g>
+</svg> 

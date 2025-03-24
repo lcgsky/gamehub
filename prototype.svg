@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="2400" viewBox="0 0 1200 2400" xmlns="http://www.w3.org/2000/svg">
+    <!-- 样式定义 -->
+    <style>
+        .title { font-size: 24px; font-weight: bold; }
+        .subtitle { font-size: 18px; font-weight: bold; }
+        .text { font-size: 14px; }
+        .container { fill: #f5f5f5; stroke: #ccc; }
+        .header { fill: #ffffff; stroke: #ddd; }
+        .button { fill: #4a90e2; }
+        .card { fill: #ffffff; stroke: #eee; }
+    </style>
+
+    <!-- 首页设计 (0-800px) -->
+    <g transform="translate(0,0)">
+        <!-- 标题 -->
+        <text x="50" y="40" class="title">首页设计</text>
+        
+        <!-- 头部导航 -->
+        <rect x="50" y="60" width="1100" height="60" class="header"/>
+        <text x="70" y="95" class="subtitle">Logo</text>
+        <rect x="800" y="70" width="80" height="40" rx="5" class="button"/>
+        <text x="815" y="95" fill="white">搜索</text>
+        <rect x="900" y="70" width="80" height="40" rx="5" class="button"/>
+        <text x="915" y="95" fill="white">登录</text>
+
+        <!-- 分类导航 -->
+        <rect x="50" y="140" width="1100" height="50" class="container"/>
+        <text x="70" y="170" class="text">全部</text>
+        <text x="150" y="170" class="text">动作</text>
+        <text x="230" y="170" class="text">益智</text>
+        <text x="310" y="170" class="text">策略</text>
+        <text x="390" y="170" class="text">角色</text>
+
+        <!-- 游戏卡片网格 -->
+        <g transform="translate(50,210)">
+            <!-- 第一行游戏卡片 -->
+            <rect x="0" y="0" width="260" height="300" class="card"/>
+            <rect x="280" y="0" width="260" height="300" class="card"/>
+            <rect x="560" y="0" width="260" height="300" class="card"/>
+            <rect x="840" y="0" width="260" height="300" class="card"/>
+            
+            <!-- 第二行游戏卡片 -->
+            <rect x="0" y="320" width="260" height="300" class="card"/>
+            <rect x="280" y="320" width="260" height="300" class="card"/>
+            <rect x="560" y="320" width="260" height="300" class="card"/>
+            <rect x="840" y="320" width="260" height="300" class="card"/>
+        </g>
+    </g>
+
+    <!-- 游戏详情页设计 (800-1600px) -->
+    <g transform="translate(0,800)">
+        <!-- 标题 -->
+        <text x="50" y="40" class="title">游戏详情页</text>
+
+        <!-- 游戏容器 -->
+        <rect x="50" y="60" width="1100" height="600" class="container"/>
+        <text x="570" y="350" text-anchor="middle" class="subtitle">游戏 iframe 容器</text>
+
+        <!-- 游戏信息 -->
+        <rect x="50" y="680" width="700" height="200" class="card"/>
+        <text x="70" y="710" class="subtitle">游戏介绍</text>
+        
+        <!-- 操作指南 -->
+        <rect x="770" y="680" width="380" height="200" class="card"/>
+        <text x="790" y="710" class="subtitle">操作指南</text>
+
+        <!-- 评论区 -->
+        <rect x="50" y="900" width="1100" height="300" class="card"/>
+        <text x="70" y="930" class="subtitle">评论区</text>
+    </g>
+
+    <!-- 后台管理界面设计 (1600-2400px) -->
+    <g transform="translate(0,1600)">
+        <!-- 标题 -->
+        <text x="50" y="40" class="title">后台管理界面</text>
+
+        <!-- 侧边栏 -->
+        <rect x="50" y="60" width="200" height="700" class="container"/>
+        <text x="70" y="90" class="subtitle">管理菜单</text>
+        <text x="70" y="120" class="text">游戏管理</text>
+        <text x="70" y="150" class="text">用户管理</text>
+        <text x="70" y="180" class="text">数据统计</text>
+        <text x="70" y="210" class="text">系统设置</text>
+
+        <!-- 主内容区 -->
+        <rect x="270" y="60" width="880" height="700" class="container"/>
+        <text x="290" y="90" class="subtitle">游戏列表</text>
+        
+        <!-- 数据表格 -->
+        <rect x="290" y="110" width="840" height="40" class="header"/>
+        <text x="310" y="135" class="text">ID</text>
+        <text x="400" y="135" class="text">游戏名称</text>
+        <text x="550" y="135" class="text">类型</text>
+        <text x="700" y="135" class="text">状态</text>
+        <text x="850" y="135" class="text">操作</text>
+
+        <!-- 表格内容 -->
+        <rect x="290" y="150" width="840" height="40" fill="#ffffff"/>
+        <rect x="290" y="190" width="840" height="40" fill="#f9f9f9"/>
+        <rect x="290" y="230" width="840" height="40" fill="#ffffff"/>
+    </g>
+</svg> 
