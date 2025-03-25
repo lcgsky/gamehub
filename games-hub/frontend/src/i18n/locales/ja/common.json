@@ -1,0 +1,191 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "games": "ゲーム",
+    "categories": "カテゴリー",
+    "about": "概要",
+    "popular": "人気",
+    "newest": "新着",
+    "profile": "プロフィール",
+    "favorites": "お気に入り"
+  },
+  "auth": {
+    "login": "ログイン",
+    "register": "新規登録",
+    "logout": "ログアウト",
+    "email": "メールアドレス/ユーザー名",
+    "email_placeholder": "メールアドレスまたはユーザー名を入力してください",
+    "username": "ユーザー名",
+    "username_placeholder": "ユーザー名を入力してください",
+    "password": "パスワード",
+    "password_placeholder": "パスワードを入力してください",
+    "password_min_length": "パスワードを入力してください（6文字以上）",
+    "confirm_password": "パスワード（確認）",
+    "confirm_password_placeholder": "パスワードを再入力してください",
+    "submit_login": "ログイン",
+    "submit_register": "登録",
+    "no_account": "アカウントをお持ちでない方",
+    "register_now": "新規登録",
+    "have_account": "すでにアカウントをお持ちの方",
+    "login_now": "ログイン",
+    "social_login": "ソーシャルアカウントでログイン",
+    "social_register": "ソーシャルアカウントで登録",
+    "login_failed": "ログインに失敗しました。後でもう一度お試しください",
+    "register_failed": "登録に失敗しました。後でもう一度お試しください",
+    "social_login_failed": "ソーシャルログインに失敗しました：{{message}}",
+    "social_register_failed": "ソーシャルアカウントの登録に失敗しました：{{message}}",
+    "password_mismatch": "パスワードが一致しません"
+  },
+  "language": {
+    "select": "言語を選択",
+    "en": "英語",
+    "zh": "中国語",
+    "ja": "日本語",
+    "ko": "韓国語"
+  },
+  "search": {
+    "placeholder": "ゲームを検索...",
+    "viewAll": "検索結果をすべて表示",
+    "noResults": "一致するゲームが見つかりません"
+  },
+  "home": {
+    "categories": {
+      "title": "ゲームカテゴリー",
+      "viewAll": "すべて表示",
+      "gamesCount": "{{count}}個のゲーム"
+    },
+    "popular": {
+      "title": "人気のゲーム",
+      "viewAll": "すべて表示",
+      "description": "最も人気のあるゲームを見つけましょう。プレイヤー数、評価、アクティビティに基づいてランク付けされています。"
+    },
+    "newest": {
+      "title": "新着ゲーム",
+      "viewAll": "すべて表示",
+      "description": "最新のゲームを探索しましょう。プラットフォームに最近追加されたゲームをここで見つけることができます。"
+    },
+    "cta": {
+      "title": "もっと面白いゲームをお探しですか？",
+      "description": "完全なゲームライブラリを閲覧し、カテゴリーでフィルタリングするか、検索を使用してお気に入りのゲームを見つけてください。",
+      "browseCategories": "カテゴリーを閲覧",
+      "searchGames": "ゲームを検索"
+    },
+    "hero": {
+      "explore": "今すぐ探索",
+      "slide1": {
+        "title": "ゲームの世界を探索",
+        "subtitle": "様々なジャンルのゲームを発見し、あなたのゲーム体験を始めましょう"
+      },
+      "slide2": {
+        "title": "人気ゲームをチェック",
+        "subtitle": "最も人気のあるゲームを体験し、プレイヤーの熱気に参加しましょう"
+      },
+      "slide3": {
+        "title": "ゲームコミュニティに参加",
+        "subtitle": "同じ趣味を持つプレイヤーと出会い、ゲーム体験を共有しましょう"
+      }
+    }
+  },
+  "categories": {
+    "action": "アクション",
+    "strategy": "ストラテジー",
+    "puzzle": "パズル",
+    "rpg": "RPG",
+    "sports": "スポーツ",
+    "casual": "カジュアル",
+    "arcade": "アーケード",
+    "adventure": "アドベンチャー"
+  },
+  "pages": {
+    "popular": {
+      "title": "人気のゲーム",
+      "description": "最も人気のあるゲームを見つけましょう。プレイヤー数、評価、アクティビティに基づいてランク付けされ、最も人気のあるゲームを簡単に見つけることができます。",
+      "noGames": "ゲームが見つかりません",
+      "tryOther": "他のカテゴリーを選択するか、フィルターをクリアしてください",
+      "viewAll": "すべてのゲームを表示",
+      "all": "すべて"
+    },
+    "newest": {
+      "title": "新着ゲーム",
+      "description": "新しいゲームを探索しましょう。プラットフォームに最近追加されたゲームをここで見つけ、新しいコンテンツをいち早く体験できます。",
+      "noGames": "ゲームが見つかりません",
+      "tryOther": "他のカテゴリーを選択するか、フィルターをクリアしてください",
+      "viewAll": "すべてのゲームを表示",
+      "all": "すべて"
+    },
+    "categories": {
+      "title": "ゲームカテゴリー",
+      "loading": "読み込み中...",
+      "gamesCount": "{{count}}個のゲーム",
+      "backToCategories": "全カテゴリーに戻る",
+      "sortBy": "並び替え",
+      "sortOptions": {
+        "newest": "最新順",
+        "popular": "人気順"
+      },
+      "noGames": {
+        "title": "ゲームが見つかりません",
+        "description": "このカテゴリーにはまだゲームがありません。"
+      },
+      "descriptions": {
+        "puzzle": "頭脳を鍛え、思考力を試すパズルゲーム",
+        "casual": "気軽に楽しめるカジュアルゲーム",
+        "arcade": "クラシックなアーケードスタイルのゲーム",
+        "strategy": "慎重な計画が必要なストラテジーゲーム",
+        "adventure": "冒険と探索が満載のアドベンチャーゲーム",
+        "rpg": "没入感のあるロールプレイングゲーム",
+        "action": "テンポの速いアクションゲーム",
+        "sports": "競技性の高いスポーツゲーム"
+      }
+    }
+  },
+  "footer": {
+    "about": {
+      "title": "GameHubについて",
+      "description": "GameHubは、様々な魅力的なゲームを集めたオンラインプラットフォームで、プレイヤーに質の高いゲーム体験を提供することを目指しています。"
+    },
+    "quickLinks": {
+      "title": "クイックリンク",
+      "about": "会社概要",
+      "contact": "お問い合わせ",
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約"
+    },
+    "support": {
+      "title": "サポート",
+      "faq": "よくある質問",
+      "help": "ヘルプセンター",
+      "report": "問題を報告",
+      "developers": "開発者向け"
+    },
+    "followUs": {
+      "title": "フォローする",
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "discord": "Discord",
+      "youtube": "YouTube"
+    },
+    "copyright": "© 2024 GameHub. All rights reserved."
+  },
+  "game": {
+    "backToList": "ゲーム一覧に戻る",
+    "gameInfo": "ゲーム情報",
+    "userComments": "ユーザーコメント",
+    "similarGames": "類似のゲーム",
+    "playGame": "プレイ開始",
+    "stopGame": "プレイ終了",
+    "addToFavorites": "お気に入りに追加",
+    "removeFromFavorites": "お気に入りから削除",
+    "category": "カテゴリー",
+    "tags": "タグ",
+    "rating": "評価",
+    "yourRating": "あなたの評価",
+    "writeComment": "コメントを書く",
+    "submitComment": "投稿",
+    "commentPlaceholder": "このゲームについての感想を共有しましょう...",
+    "commentValidation": "評価とコメントの両方を入力してください",
+    "noComments": "まだコメントがありません。最初のコメントを投稿しましょう！",
+    "loadMore": "もっと見る",
+    "noSimilarGames": "類似のゲームが見つかりません"
+  }
+} 

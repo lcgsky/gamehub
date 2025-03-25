@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { GamePlugin } from '@/types/game';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/utils/i18n';
 
 interface SearchBoxProps {
   placeholder?: string;
@@ -13,9 +15,39 @@ interface SearchBoxProps {
 
 // 模拟游戏数据（实际应用中可以共享数据或使用API）
 const mockGames: Partial<GamePlugin>[] = [
-  { id: '1', name: '银河征服者', category: 'strategy', tags: ['太空', '策略', '探索'] },
-  { id: '2', name: '魔法世界', category: 'rpg', tags: ['奇幻', 'RPG', '冒险'] },
-  { id: '3', name: '方块解谜', category: 'puzzle', tags: ['解谜', '益智', '休闲'] },
+  { 
+    id: '1', 
+    name: {
+      en: 'Space Explorer',
+      zh: '太空探险',
+      ja: '宇宙探検',
+      ko: '우주 탐험'
+    }, 
+    category: 'strategy', 
+    tags: ['太空', '策略', '探索'] 
+  },
+  { 
+    id: '2', 
+    name: {
+      en: 'Magic World',
+      zh: '魔法世界',
+      ja: 'マジックワールド',
+      ko: '마법 세계'
+    }, 
+    category: 'rpg', 
+    tags: ['奇幻', 'RPG', '冒险'] 
+  },
+  { 
+    id: '3', 
+    name: {
+      en: 'Block Puzzle',
+      zh: '方块解谜',
+      ja: 'ブロックパズル',
+      ko: '블록 퍼즐'
+    }, 
+    category: 'puzzle', 
+    tags: ['解谜', '益智', '休闲'] 
+  },
   { id: '4', name: '超级赛车', category: 'sports', tags: ['赛车', '竞速', '体育'] },
   { id: '5', name: '丧尸围城', category: 'action', tags: ['生存', '丧尸', '动作'] },
   { id: '6', name: '水果忍者', category: 'casual', tags: ['休闲', '切水果', '手机游戏'] },
@@ -34,6 +66,17 @@ const SearchBox: React.FC<SearchBoxProps> = ({
   const router = useRouter();
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [translations, setTranslations] = useState({});
+  const { locale } = useLanguage();
+  
+  useEffect(() => {
+    async function loadTranslations() {
+      const { getTranslations } = await import('@/utils/i18n');
+      const trans = await getTranslations(locale, 'common');
+      setTranslations(trans);
+    }
+    loadTranslations();
+  }, [locale]);
   
   // 点击外部关闭下拉框
   useEffect(() => {
@@ -58,13 +101,13 @@ const SearchBox: React.FC<SearchBoxProps> = ({
     
     const searchLower = searchTerm.toLowerCase();
     const filtered = mockGames.filter(game => 
-      game.name?.toLowerCase().includes(searchLower) ||
+      game.name?.[locale].toLowerCase().includes(searchLower) ||
       game.category?.toLowerCase().includes(searchLower) ||
       game.tags?.some(tag => tag.toLowerCase().includes(searchLower))
     ).slice(0, 5); // 最多显示5个结果
     
     setResults(filtered);
-  }, [searchTerm]);
+  }, [searchTerm, locale]);
   
   // 搜索输入框获取焦点时打开下拉框
   const handleFocus = () => {
@@ -99,7 +142,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={handleFocus}
-          placeholder={placeholder}
+          placeholder={translate(translations, 'search.placeholder')}
           className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <div className="absolute left-3 top-2.5 text-gray-400">
@@ -129,9 +172,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({
                     className="w-full px-4 py-3 text-left hover:bg-gray-50 transition duration-150 flex items-center"
                   >
                     <span className="flex-grow">
-                      <span className="block font-medium text-gray-900">{game.name}</span>
+                      <span className="block font-medium text-gray-900">{game.name?.[locale]}</span>
                       <span className="block text-sm text-gray-500">
-                        {game.category} • {game.tags?.join(', ')}
+                        {translate(translations, `categories.${game.category}`)} • {game.tags?.join(', ')}
                       </span>
                     </span>
                     <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -149,13 +192,13 @@ const SearchBox: React.FC<SearchBoxProps> = ({
                     if (onClose) onClose();
                   }}
                 >
-                  查看全部搜索结果
+                  {translate(translations, 'search.viewAll')}
                 </Link>
               </li>
             </ul>
           ) : searchTerm.length >= 2 ? (
             <div className="px-4 py-3 text-gray-500 text-center">
-              没有找到匹配的游戏
+              {translate(translations, 'search.noResults')}
             </div>
           ) : null}
         </div>

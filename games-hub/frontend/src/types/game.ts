@@ -5,18 +5,25 @@ export interface GameConfig {
   customParams?: Record<string, any>;
 }
 
+export interface LocalizedString {
+  en: string;
+  zh: string;
+  ja: string;
+  ko: string;
+}
+
 export interface GamePlugin {
   id: string;
-  name: string;
-  description: string;
+  name: LocalizedString;
+  description: LocalizedString;
   type: string;
   url: string;
   tags: string[];
   category: string;
-  status: string;
+  status: 'active' | 'inactive';
   thumbnail: string;
-  config: GameConfig;
-  instructions?: string;
+  config: Record<string, any>;
+  instructions?: LocalizedString;
 }
 
 export interface GameComment {
@@ -25,7 +32,7 @@ export interface GameComment {
   userName: string;
   userAvatar: string;
   rating: number;
-  content: string;
+  content: LocalizedString;
   createdAt: string;
 }
 

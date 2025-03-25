@@ -4,29 +4,35 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { UserProvider } from "@/context/UserContext";
+import { LanguageProvider } from '@/context/LanguageContext';
+import { defaultLocale } from '@/i18n/config';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "GameHub - 游戏聚合平台",
-  description: "发现各种各样的在线游戏，尽在GameHub",
+  title: "GameHub - Game Aggregation Platform",
+  description: "Discover and play various online games on GameHub",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="zh">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <UserProvider>
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </UserProvider>
+    <html lang={defaultLocale}>
+      <body className={inter.className}>
+        <LanguageProvider>
+          <UserProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </UserProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

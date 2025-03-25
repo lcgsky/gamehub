@@ -1,0 +1,190 @@
+{
+  "nav": {
+    "home": "Home",
+    "games": "Games",
+    "categories": "Categories",
+    "about": "About",
+    "popular": "Popular",
+    "newest": "Latest",
+    "profile": "Profile",
+    "favorites": "Favorites"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email/Username",
+    "email_placeholder": "Please enter your email or username",
+    "username": "Username",
+    "username_placeholder": "Please enter your username",
+    "password": "Password",
+    "password_placeholder": "Please enter your password",
+    "password_min_length": "Please enter your password (minimum 6 characters)",
+    "confirm_password": "Confirm Password",
+    "confirm_password_placeholder": "Please enter your password again",
+    "submit_login": "Login",
+    "submit_register": "Register",
+    "no_account": "Don't have an account?",
+    "register_now": "Register Now",
+    "have_account": "Already have an account?",
+    "login_now": "Login Now",
+    "social_login": "Or login with social account",
+    "social_register": "Or register with social account",
+    "login_failed": "Login failed, please try again later",
+    "register_failed": "Registration failed, please try again later",
+    "social_login_failed": "Social login failed: {{message}}",
+    "social_register_failed": "Social registration failed: {{message}}",
+    "password_mismatch": "The passwords you entered do not match"
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ko": "Korean"
+  },
+  "search": {
+    "placeholder": "Search games...",
+    "viewAll": "View all search results",
+    "noResults": "No matching games found"
+  },
+  "home": {
+    "categories": {
+      "title": "Game Categories",
+      "viewAll": "View All",
+      "gamesCount": "{{count}} games"
+    },
+    "popular": {
+      "title": "Popular Games",
+      "viewAll": "View All",
+      "description": "Discover the most popular games. These games are ranked by player count, ratings, and activity."
+    },
+    "newest": {
+      "title": "Latest Games",
+      "viewAll": "View All",
+      "description": "Explore the latest games. Here you'll find the most recently added games to the platform."
+    },
+    "cta": {
+      "title": "Looking for more fun games?",
+      "description": "Browse our complete game library, filter by category, or use the search to find your favorite games.",
+      "browseCategories": "Browse Categories",
+      "searchGames": "Search Games"
+    },
+    "hero": {
+      "explore": "Explore Now",
+      "slide1": {
+        "title": "Explore Game World",
+        "subtitle": "Discover various exciting game genres and start your gaming journey"
+      },
+      "slide2": {
+        "title": "Popular Games",
+        "subtitle": "Experience the most popular games and join the player excitement"
+      },
+      "slide3": {
+        "title": "Join Gaming Community",
+        "subtitle": "Meet like-minded players and share gaming experiences"
+      }
+    }
+  },
+  "categories": {
+    "action": "Action",
+    "strategy": "Strategy",
+    "puzzle": "Puzzle",
+    "rpg": "RPG",
+    "sports": "Sports",
+    "casual": "Casual",
+    "arcade": "Arcade",
+    "adventure": "Adventure"
+  },
+  "pages": {
+    "popular": {
+      "title": "Popular Games",
+      "description": "Discover the most popular games. These games are ranked by player count, ratings, and activity, making it easy to find the hottest games.",
+      "noGames": "No games found",
+      "tryOther": "Try selecting a different category or clear filters",
+      "viewAll": "View All Games",
+      "all": "All"
+    },
+    "newest": {
+      "title": "Latest Games",
+      "description": "Explore the latest games. Here you'll find the most recently added games to the platform, giving you first access to new content.",
+      "noGames": "No games found",
+      "tryOther": "Try selecting a different category or clear filters",
+      "viewAll": "View All Games",
+      "all": "All"
+    },
+    "categories": {
+      "title": "Game Categories",
+      "loading": "Loading...",
+      "gamesCount": "{{count}} games",
+      "backToCategories": "Back to all categories",
+      "sortBy": "Sort by",
+      "sortOptions": {
+        "newest": "Latest",
+        "popular": "Popular"
+      },
+      "noGames": {
+        "title": "No games found",
+        "description": "There are no games in this category yet."
+      },
+      "descriptions": {
+        "puzzle": "Brain-teasing puzzle games that challenge your mind",
+        "casual": "Fun and relaxing casual games",
+        "arcade": "Classic arcade-style games",
+        "strategy": "Strategic games that require careful planning",
+        "adventure": "Exciting adventure games full of exploration",
+        "rpg": "Immersive role-playing games",
+        "action": "Fast-paced action games",
+        "sports": "Competitive sports games"
+      }
+    }
+  },
+  "footer": {
+    "about": {
+      "title": "About",
+      "description": "GameHub is an online platform that brings together various exciting games, dedicated to providing players with the best gaming experience."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "support": {
+      "title": "Support",
+      "faq": "FAQ",
+      "help": "Help Center",
+      "report": "Report Issue",
+      "developers": "Developer Support"
+    },
+    "followUs": {
+      "title": "Follow Us",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "discord": "Discord"
+    },
+    "copyright": "© 2024 GameHub. All rights reserved."
+  },
+  "game": {
+    "backToList": "Back to Games",
+    "gameInfo": "Game Information",
+    "userComments": "User Comments",
+    "similarGames": "Similar Games",
+    "playGame": "Play Game",
+    "stopGame": "Stop Game",
+    "addToFavorites": "Add to Favorites",
+    "removeFromFavorites": "Remove from Favorites",
+    "category": "Category",
+    "tags": "Tags",
+    "rating": "Rating",
+    "yourRating": "Your Rating",
+    "writeComment": "Write a Comment",
+    "submitComment": "Submit",
+    "commentPlaceholder": "Share your thoughts about this game...",
+    "commentValidation": "Please provide both rating and comment",
+    "noComments": "No comments yet. Be the first to comment!",
+    "loadMore": "Load More Comments",
+    "noSimilarGames": "No similar games found"
+  }
+} 

@@ -2,55 +2,55 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { GamePlugin } from '@/types/game';
+import { GamePlugin, LocalizedString } from '@/types/game';
+import { useLanguage } from '@/hooks/useLanguage';
+import { translate } from '@/utils/i18n';
+import { useState, useEffect } from 'react';
 
 interface GameCardProps {
   game: GamePlugin;
-  showCategory?: boolean;
 }
 
-const GameCard: React.FC<GameCardProps> = ({ game, showCategory = true }) => {
-  const [isHovered, setIsHovered] = useState(false);
+export default function GameCard({ game }: GameCardProps) {
+  const { locale } = useLanguage();
+  const [translations, setTranslations] = useState({});
+
+  useEffect(() => {
+    async function loadTranslations() {
+      const { getTranslations } = await import('@/utils/i18n');
+      const trans = await getTranslations(locale as keyof LocalizedString, 'common');
+      setTranslations(trans);
+    }
+    loadTranslations();
+  }, [locale]);
 
   return (
-    <Link 
-      href={`/games/${game.id}`}
-      className="block group"
-    >
-      <div 
-        className="bg-white rounded-lg shadow hover:shadow-md transition duration-200 overflow-hidden h-full flex flex-col"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* 图片容器 */}
-        <div className="relative w-full h-44 overflow-hidden">
+    <Link href={`/games/${game.id}`}>
+      <div className="bg-white rounded-lg shadow hover:shadow-md transition duration-150 overflow-hidden group">
+        <div className="relative h-48">
           <Image
             src={game.thumbnail}
-            alt={game.name}
+            alt={game.name[locale as keyof LocalizedString]}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className={`object-cover transition-transform duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`}
+            className="object-cover transition duration-200 group-hover:scale-105"
           />
-          {/* 分类标签 */}
-          {showCategory && (
-            <div className="absolute top-3 left-3">
-              <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">
-                {game.category}
-              </span>
-            </div>
-          )}
+          <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+            {translate(translations, `categories.${game.category.toLowerCase()}`)}
+          </div>
         </div>
-        
-        {/* 内容 */}
-        <div className="p-4 flex-grow flex flex-col">
-          <h3 className="font-bold text-lg text-gray-800 mb-2">{game.name}</h3>
-          <p className="text-gray-600 text-sm line-clamp-2 mb-3 flex-grow">{game.description}</p>
-          
-          {/* 标签 */}
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {game.tags.slice(0, 3).map((tag, index) => (
-              <span key={index} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
+        <div className="p-4">
+          <h3 className="font-medium text-gray-800 mb-1">
+            {game.name[locale as keyof LocalizedString]}
+          </h3>
+          <p className="text-sm text-gray-600 line-clamp-2">
+            {game.description[locale as keyof LocalizedString]}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-1">
+            {game.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded"
+              >
                 {tag}
               </span>
             ))}
@@ -59,6 +59,4 @@ const GameCard: React.FC<GameCardProps> = ({ game, showCategory = true }) => {
       </div>
     </Link>
   );
-};
-
-export default GameCard; 
+} 

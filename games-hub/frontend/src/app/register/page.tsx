@@ -1,53 +1,60 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import AuthForm from '@/components/auth/AuthForm';
 import { useUser } from '@/context/UserContext';
+import { useLanguage } from '@/hooks/useLanguage';
+import { Language, Translations } from '@/types/i18n';
 
 export default function RegisterPage() {
   const { register, login, isLoading } = useUser();
   const [error, setError] = useState<string | undefined>();
   const [socialLoading, setSocialLoading] = useState<string | null>(null);
   const router = useRouter();
+  const { locale } = useLanguage();
+  const [translations, setTranslations] = useState<Translations>({} as Translations);
+
+  useEffect(() => {
+    async function loadTranslations() {
+      const { getTranslations } = await import('@/utils/i18n');
+      const trans = await getTranslations(locale as Language, 'common');
+      setTranslations(trans as Translations);
+    }
+    loadTranslations();
+  }, [locale]);
 
   const handleRegister = async (data: Record<string, string>) => {
     try {
-      // 密码确认验证
       if (data.password !== data.confirmPassword) {
-        setError('两次输入的密码不一致');
+        setError(translations?.auth?.password_mismatch || 'The passwords you entered do not match');
         return;
       }
       
       await register(data.username, data.email, data.password);
-      router.push('/'); // 注册成功后跳转到首页
+      router.push('/');
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('注册失败，请稍后再试');
+        setError(translations?.auth?.register_failed || 'Registration failed, please try again later');
       }
     }
   };
 
-  // 处理社交账号注册/登录
   const handleSocialLogin = async (provider: string) => {
     setSocialLoading(provider);
     try {
-      // 模拟社交登录延迟
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // 创建一个基于社交平台的用户名和邮箱
       const username = `${provider}user${Date.now().toString().slice(-4)}`;
       const email = `${username}@example.com`;
       const password = `${provider}${Date.now().toString().slice(-6)}`;
       
-      // 尝试注册新用户
       try {
         await register(username, email, password);
         router.push('/');
       } catch (registerError) {
-        // 如果注册失败（例如用户名或邮箱已存在），则尝试登录已有账号
         if (provider === 'facebook') {
           await login('demo', 'password123');
         } else if (provider === 'google') {
@@ -59,9 +66,9 @@ export default function RegisterPage() {
       }
     } catch (err) {
       if (err instanceof Error) {
-        setError(`社交账号注册失败: ${err.message}`);
+        setError(translations?.auth?.social_register_failed?.replace('{{message}}', err.message) || `Social registration failed: ${err.message}`);
       } else {
-        setError('社交账号注册失败，请稍后再试');
+        setError(translations?.auth?.register_failed || 'Registration failed, please try again later');
       }
     } finally {
       setSocialLoading(null);
@@ -71,30 +78,30 @@ export default function RegisterPage() {
   const registerFields = [
     {
       id: 'username',
-      label: '用户名',
+      label: translations?.auth?.username || 'Username',
       type: 'text',
-      placeholder: '请输入用户名',
+      placeholder: translations?.auth?.username_placeholder || 'Please enter your username',
       required: true
     },
     {
       id: 'email',
-      label: '邮箱',
+      label: translations?.auth?.email || 'Email',
       type: 'email',
-      placeholder: '请输入邮箱地址',
+      placeholder: translations?.auth?.email_placeholder || 'Please enter your email address',
       required: true
     },
     {
       id: 'password',
-      label: '密码',
+      label: translations?.auth?.password || 'Password',
       type: 'password',
-      placeholder: '请输入密码（至少6位）',
+      placeholder: translations?.auth?.password_min_length || 'Please enter your password (minimum 6 characters)',
       required: true
     },
     {
       id: 'confirmPassword',
-      label: '确认密码',
+      label: translations?.auth?.confirm_password || 'Confirm Password',
       type: 'password',
-      placeholder: '请再次输入密码',
+      placeholder: translations?.auth?.confirm_password_placeholder || 'Please enter your password again',
       required: true
     }
   ];
@@ -103,19 +110,19 @@ export default function RegisterPage() {
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-md mx-auto">
         <AuthForm
-          title="注册账号"
+          title={translations?.auth?.register || 'Register'}
           fields={registerFields}
-          submitText="注册"
+          submitText={translations?.auth?.submit_register || 'Register'}
           onSubmit={handleRegister}
           isLoading={isLoading}
           error={error}
-          redirectText="已有账号？"
+          redirectText={translations?.auth?.have_account || 'Already have an account?'}
           redirectLink="/login"
-          redirectLinkText="立即登录"
+          redirectLinkText={translations?.auth?.login_now || 'Login Now'}
         />
         
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600 mb-4">或使用社交账号注册</p>
+          <p className="text-sm text-gray-600 mb-4">{translations?.auth?.social_register || 'Or register with social account'}</p>
           <div className="flex justify-center space-x-4">
             <button 
               onClick={() => handleSocialLogin('facebook')}
@@ -172,7 +179,7 @@ export default function RegisterPage() {
               )}
             </button>
           </div>
-          {error && error.includes('社交账号') && (
+          {error && error.includes('social') && (
             <p className="mt-3 text-sm text-red-500">{error}</p>
           )}
         </div>

@@ -1,37 +1,47 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import AuthForm from '@/components/auth/AuthForm';
 import { useUser } from '@/context/UserContext';
+import { useLanguage } from '@/hooks/useLanguage';
+import { Language, Translations } from '@/types/i18n';
 
 export default function LoginPage() {
   const { login, isLoading } = useUser();
   const [error, setError] = useState<string | undefined>();
   const [socialLoading, setSocialLoading] = useState<string | null>(null);
   const router = useRouter();
+  const { locale } = useLanguage();
+  const [translations, setTranslations] = useState<Translations>({} as Translations);
+
+  useEffect(() => {
+    async function loadTranslations() {
+      const { getTranslations } = await import('@/utils/i18n');
+      const trans = await getTranslations(locale as Language, 'common');
+      setTranslations(trans as Translations);
+    }
+    loadTranslations();
+  }, [locale]);
 
   const handleLogin = async (data: Record<string, string>) => {
     try {
       await login(data.email, data.password);
-      router.push('/'); // 登录成功后跳转到首页
+      router.push('/');
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('登录失败，请稍后再试');
+        setError(translations?.auth?.login_failed || 'Login failed, please try again later');
       }
     }
   };
 
-  // 处理社交账号登录
   const handleSocialLogin = async (provider: string) => {
     setSocialLoading(provider);
     try {
-      // 模拟社交登录延迟
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // 使用预设账号模拟社交登录成功
       let socialEmail, socialPassword;
       
       switch(provider) {
@@ -44,22 +54,21 @@ export default function LoginPage() {
           socialPassword = 'test123';
           break;
         case 'apple':
-          // 随机选择一个已存在的账号
           const random = Math.random() > 0.5;
           socialEmail = random ? 'demo' : 'test';
           socialPassword = random ? 'password123' : 'test123';
           break;
         default:
-          throw new Error('未知的社交平台');
+          throw new Error('Unknown social platform');
       }
 
       await login(socialEmail, socialPassword);
       router.push('/');
     } catch (err) {
       if (err instanceof Error) {
-        setError(`社交登录失败: ${err.message}`);
+        setError(translations?.auth?.social_login_failed?.replace('{{message}}', err.message) || `Social login failed: ${err.message}`);
       } else {
-        setError('社交登录失败，请稍后再试');
+        setError(translations?.auth?.login_failed || 'Login failed, please try again later');
       }
     } finally {
       setSocialLoading(null);
@@ -69,16 +78,16 @@ export default function LoginPage() {
   const loginFields = [
     {
       id: 'email',
-      label: '邮箱/用户名',
+      label: translations?.auth?.email || 'Email/Username',
       type: 'text',
-      placeholder: '请输入邮箱地址或用户名',
+      placeholder: translations?.auth?.email_placeholder || 'Please enter your email or username',
       required: true
     },
     {
       id: 'password',
-      label: '密码',
+      label: translations?.auth?.password || 'Password',
       type: 'password',
-      placeholder: '请输入密码',
+      placeholder: translations?.auth?.password_placeholder || 'Please enter your password',
       required: true
     }
   ];
@@ -87,19 +96,19 @@ export default function LoginPage() {
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-md mx-auto">
         <AuthForm
-          title="登录"
+          title={translations?.auth?.login || 'Login'}
           fields={loginFields}
-          submitText="登录"
+          submitText={translations?.auth?.submit_login || 'Login'}
           onSubmit={handleLogin}
           isLoading={isLoading}
           error={error}
-          redirectText="还没有账号？"
+          redirectText={translations?.auth?.no_account || "Don't have an account?"}
           redirectLink="/register"
-          redirectLinkText="立即注册"
+          redirectLinkText={translations?.auth?.register_now || 'Register Now'}
         />
         
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600 mb-4">或使用社交账号登录</p>
+          <p className="text-sm text-gray-600 mb-4">{translations?.auth?.social_login || 'Or login with social account'}</p>
           <div className="flex justify-center space-x-4">
             <button 
               onClick={() => handleSocialLogin('facebook')}
@@ -156,7 +165,7 @@ export default function LoginPage() {
               )}
             </button>
           </div>
-          {error && error.includes('社交登录') && (
+          {error && error.includes('social') && (
             <p className="mt-3 text-sm text-red-500">{error}</p>
           )}
         </div>

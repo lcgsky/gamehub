@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "首页",
+    "games": "游戏",
+    "categories": "分类",
+    "about": "关于",
+    "popular": "热门",
+    "newest": "最新",
+    "profile": "个人资料",
+    "favorites": "我的收藏"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出",
+    "email": "邮箱/用户名",
+    "email_placeholder": "请输入邮箱地址或用户名",
+    "username": "用户名",
+    "username_placeholder": "请输入用户名",
+    "password": "密码",
+    "password_placeholder": "请输入密码",
+    "password_min_length": "请输入密码（至少6位）",
+    "confirm_password": "确认密码",
+    "confirm_password_placeholder": "请再次输入密码",
+    "submit_login": "登录",
+    "submit_register": "注册",
+    "no_account": "还没有账号？",
+    "register_now": "立即注册",
+    "have_account": "已有账号？",
+    "login_now": "立即登录",
+    "social_login": "或使用社交账号登录",
+    "social_register": "或使用社交账号注册",
+    "login_failed": "登录失败，请稍后再试",
+    "register_failed": "注册失败，请稍后再试",
+    "social_login_failed": "社交登录失败：{{message}}",
+    "social_register_failed": "社交账号注册失败：{{message}}",
+    "password_mismatch": "两次输入的密码不一致"
+  },
+  "language": {
+    "select": "选择语言",
+    "en": "英文",
+    "zh": "中文",
+    "ja": "日文",
+    "ko": "韩文"
+  },
+  "search": {
+    "placeholder": "搜索游戏...",
+    "viewAll": "查看全部搜索结果",
+    "noResults": "没有找到匹配的游戏"
+  },
+  "home": {
+    "categories": {
+      "title": "游戏分类",
+      "viewAll": "查看全部",
+      "gamesCount": "{{count}}个游戏"
+    },
+    "popular": {
+      "title": "热门游戏",
+      "viewAll": "查看全部",
+      "description": "发现最受欢迎的游戏。这些游戏根据玩家数量、评分和活跃度进行排名。"
+    },
+    "newest": {
+      "title": "最新游戏",
+      "viewAll": "查看全部",
+      "description": "探索最新上线的游戏。在这里你可以找到平台上最新添加的游戏。"
+    },
+    "cta": {
+      "title": "寻找更多有趣的游戏？",
+      "description": "浏览我们完整的游戏库，按分类筛选，或使用搜索来找到你喜欢的游戏。",
+      "browseCategories": "浏览分类",
+      "searchGames": "搜索游戏"
+    },
+    "hero": {
+      "explore": "立即探索",
+      "slide1": {
+        "title": "探索游戏世界",
+        "subtitle": "发现各种精彩的游戏类型，开启你的游戏之旅"
+      },
+      "slide2": {
+        "title": "热门游戏推荐",
+        "subtitle": "体验最受欢迎的游戏，加入玩家的狂欢"
+      },
+      "slide3": {
+        "title": "加入游戏社区",
+        "subtitle": "结识志同道合的玩家，分享游戏体验"
+      }
+    }
+  },
+  "categories": {
+    "action": "动作",
+    "strategy": "策略",
+    "puzzle": "益智",
+    "rpg": "角色扮演",
+    "sports": "体育",
+    "casual": "休闲",
+    "arcade": "街机",
+    "adventure": "冒险"
+  },
+  "pages": {
+    "popular": {
+      "title": "热门游戏",
+      "description": "发现最受欢迎的游戏。这些游戏根据玩家数量、评分和活跃度进行排名，让你轻松找到最热门的游戏。",
+      "noGames": "没有找到游戏",
+      "tryOther": "尝试选择其他分类或清除筛选条件",
+      "viewAll": "查看全部游戏",
+      "all": "全部"
+    },
+    "newest": {
+      "title": "最新游戏",
+      "description": "探索最新游戏。在这里你可以找到平台上最新添加的游戏，第一时间体验新内容。",
+      "noGames": "没有找到游戏",
+      "tryOther": "尝试选择其他分类或清除筛选条件",
+      "viewAll": "查看全部游戏",
+      "all": "全部"
+    },
+    "categories": {
+      "title": "游戏分类",
+      "loading": "加载中...",
+      "gamesCount": "{{count}} 款游戏",
+      "backToCategories": "返回所有分类",
+      "sortBy": "排序方式",
+      "sortOptions": {
+        "newest": "最新发布",
+        "popular": "热门优先"
+      },
+      "noGames": {
+        "title": "没有找到游戏",
+        "description": "该分类下暂时没有游戏。"
+      }
+    }
+  },
+  "footer": {
+    "about": {
+      "title": "简介",
+      "description": "GameHub是一个聚合各类精彩游戏的在线平台，致力于为玩家提供优质的游戏体验。"
+    },
+    "quickLinks": {
+      "title": "快速链接",
+      "about": "关于我们",
+      "contact": "联系我们",
+      "privacy": "隐私政策",
+      "terms": "服务条款"
+    },
+    "support": {
+      "title": "支持",
+      "faq": "常见问题",
+      "help": "帮助中心",
+      "report": "问题反馈",
+      "developers": "开发者支持"
+    },
+    "followUs": {
+      "title": "关注我们",
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "discord": "Discord",
+      "youtube": "YouTube"
+    },
+    "copyright": "© 2024 GameHub. 保留所有权利。"
+  },
+  "game": {
+    "backToList": "返回游戏列表",
+    "gameInfo": "游戏信息",
+    "userComments": "用户评论",
+    "similarGames": "相似游戏",
+    "playGame": "开始游戏",
+    "stopGame": "停止游戏",
+    "addToFavorites": "添加到收藏",
+    "removeFromFavorites": "取消收藏",
+    "category": "分类",
+    "tags": "标签",
+    "rating": "评分",
+    "yourRating": "你的评分",
+    "writeComment": "写评论",
+    "submitComment": "提交",
+    "commentPlaceholder": "分享你对这个游戏的看法...",
+    "commentValidation": "请填写评分和评论内容",
+    "noComments": "暂无评论，来做第一个评论的人吧！",
+    "loadMore": "加载更多评论",
+    "noSimilarGames": "没有找到相似游戏"
+  }
+} 

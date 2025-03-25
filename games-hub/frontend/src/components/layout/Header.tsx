@@ -6,13 +6,27 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import SearchBox from '../search/SearchBox';
 import { useUser } from '@/context/UserContext';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/utils/i18n';
+import { LanguageSelector } from '../common/LanguageSelector';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [translations, setTranslations] = useState({});
   const pathname = usePathname();
   const { user } = useUser();
+  const { locale } = useLanguage();
   const userMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    async function loadTranslations() {
+      const { getTranslations } = await import('@/utils/i18n');
+      const trans = await getTranslations(locale, 'common');
+      setTranslations(trans);
+    }
+    loadTranslations();
+  }, [locale]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -53,25 +67,25 @@ const Header = () => {
               href="/" 
               className={`${pathname === '/' ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-blue-600'} transition duration-150`}
             >
-              首页
+              {translate(translations, 'nav.home')}
             </Link>
             <Link 
               href="/categories" 
               className={`${pathname === '/categories' || pathname.startsWith('/categories/') ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-blue-600'} transition duration-150`}
             >
-              分类
+              {translate(translations, 'nav.categories')}
             </Link>
             <Link 
               href="/popular" 
               className={`${pathname === '/popular' ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-blue-600'} transition duration-150`}
             >
-              热门
+              {translate(translations, 'nav.popular')}
             </Link>
             <Link 
               href="/newest" 
               className={`${pathname === '/newest' ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-blue-600'} transition duration-150`}
             >
-              最新
+              {translate(translations, 'nav.newest')}
             </Link>
           </nav>
 
@@ -80,6 +94,8 @@ const Header = () => {
             <div className="relative hidden md:block w-64">
               <SearchBox />
             </div>
+            
+            <LanguageSelector />
             
             {user ? (
               <div className="relative" ref={userMenuRef}>
@@ -108,30 +124,29 @@ const Header = () => {
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      个人资料
+                      {translate(translations, 'nav.profile')}
                     </Link>
                     <Link 
                       href="/profile?tab=favorites" 
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      我的收藏
+                      {translate(translations, 'nav.favorites')}
                     </Link>
                     <div className="border-t border-gray-100 my-1"></div>
-                    <Link 
-                      href="/logout" 
-                      className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                    <button 
                       onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                     >
-                      退出登录
-                    </Link>
+                      {translate(translations, 'auth.logout')}
+                    </button>
                   </div>
                 )}
               </div>
             ) : (
               <Link href="/login" className="hidden md:block">
                 <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-150">
-                  登录
+                  {translate(translations, 'auth.login')}
                 </button>
               </Link>
             )}
@@ -177,32 +192,34 @@ const Header = () => {
                 className={`${pathname === '/' ? 'text-blue-600 font-semibold' : 'text-gray-600'} px-2 py-1`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                首页
+                {translate(translations, 'nav.home')}
               </Link>
               <Link 
                 href="/categories" 
                 className={`${pathname === '/categories' || pathname.startsWith('/categories/') ? 'text-blue-600 font-semibold' : 'text-gray-600'} px-2 py-1`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                分类
+                {translate(translations, 'nav.categories')}
               </Link>
               <Link 
                 href="/popular" 
                 className={`${pathname === '/popular' ? 'text-blue-600 font-semibold' : 'text-gray-600'} px-2 py-1`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                热门
+                {translate(translations, 'nav.popular')}
               </Link>
               <Link 
                 href="/newest" 
                 className={`${pathname === '/newest' ? 'text-blue-600 font-semibold' : 'text-gray-600'} px-2 py-1`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                最新
+                {translate(translations, 'nav.newest')}
               </Link>
               <div className="relative mt-2">
                 <SearchBox onClose={() => setIsMenuOpen(false)} />
               </div>
+              
+              <LanguageSelector />
               
               {user ? (
                 <div className="border-t border-gray-200 pt-2 mt-2">
@@ -222,20 +239,20 @@ const Header = () => {
                     className="block px-2 py-1 text-gray-600 mt-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    个人资料
+                    {translate(translations, 'nav.profile')}
                   </Link>
                   <Link 
                     href="/profile?tab=favorites" 
                     className="block px-2 py-1 text-gray-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    我的收藏
+                    {translate(translations, 'nav.favorites')}
                   </Link>
                   <button 
                     className="w-full text-left px-2 py-1 text-red-600 mt-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    退出登录
+                    {translate(translations, 'auth.logout')}
                   </button>
                 </div>
               ) : (
@@ -244,7 +261,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-150 mt-2 w-full">
-                    登录
+                    {translate(translations, 'auth.login')}
                   </button>
                 </Link>
               )}
